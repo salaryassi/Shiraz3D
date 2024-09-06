@@ -1,10 +1,17 @@
 {
   "repository": "#",
   "license": "UNLICENSED",
+  "name": "your-project-name",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://salaryassi.github.io/Shiraz3D",
   "scripts": {
-    "build": "webpack --config ./bundler/webpack.prod.js",
-    "dev": "webpack serve --config ./bundler/webpack.dev.js",
-    "prod": "git switch prod; git merge main; git push; git switch main"
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack --config ./bundler/webpack.prod.js",
+    "dev": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack serve --config ./bundler/webpack.dev.js",
+    "prod": "git switch prod; git merge main; git push; git switch main",
+    "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@babel/core": "^7.14.6",
@@ -14,6 +21,7 @@
     "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^5.2.6",
     "file-loader": "^6.2.0",
+    "gh-pages": "^3.2.3",
     "glsl-blend": "^1.0.3",
     "glslify-loader": "^2.0.0",
     "gsap": "^3.7.1",
@@ -31,5 +39,8 @@
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.8.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }
